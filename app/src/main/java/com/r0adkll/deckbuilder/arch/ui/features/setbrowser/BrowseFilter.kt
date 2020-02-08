@@ -14,6 +14,8 @@ import io.pokemontcg.model.SubType.POKEMON_TOOL
 import io.pokemontcg.model.SubType.STADIUM
 import io.pokemontcg.model.SubType.SUPPORTER
 import io.pokemontcg.model.SubType.TAG_TEAM
+import io.pokemontcg.model.SubType.V
+import io.pokemontcg.model.SubType.VMAX
 import io.pokemontcg.model.SuperType
 import io.pokemontcg.model.SuperType.ENERGY
 import io.pokemontcg.model.SuperType.POKEMON
@@ -78,17 +80,21 @@ sealed class BrowseFilter : Parcelable {
                 POKEMON_TOOL -> R.string.tab_tool
                 BREAK -> R.string.tab_break
                 TAG_TEAM -> R.string.tab_tagteam
+                V -> R.string.tab_v
+                VMAX -> R.string.tab_vmax
                 else -> -1
             }
 
         override val weight: Int
             get() = when (subType) {
-                GX, EX, MEGA, BREAK -> 4
-                TAG_TEAM -> 5
-                ITEM -> 6
-                SUPPORTER -> 7
-                STADIUM -> 8
-                else -> 9
+                VMAX -> 4
+                V -> 5
+                GX, EX, MEGA, BREAK -> 6
+                TAG_TEAM -> 7
+                ITEM -> 8
+                SUPPORTER -> 9
+                STADIUM -> 10
+                else -> 11
             }
 
         override fun apply(card: PokemonCard): Boolean {
@@ -103,7 +109,7 @@ sealed class BrowseFilter : Parcelable {
             get() = R.string.tab_prism
 
         override val weight: Int
-            get() = 4
+            get() = 6
 
         override fun apply(card: PokemonCard): Boolean {
             return card.name.contains(CardUtils.PRISM_SYMBOL)
@@ -126,10 +132,11 @@ sealed class BrowseFilter : Parcelable {
                 SubTypeBrowseFilter(ITEM),
                 SubTypeBrowseFilter(STADIUM),
                 SubTypeBrowseFilter(SUPPORTER),
-                SubTypeBrowseFilter(GX),
                 SubTypeBrowseFilter(POKEMON_TOOL),
                 SubTypeBrowseFilter(BREAK),
                 SubTypeBrowseFilter(TAG_TEAM),
+                SubTypeBrowseFilter(V),
+                SubTypeBrowseFilter(VMAX),
                 PrismStarFilter()
             )
         }

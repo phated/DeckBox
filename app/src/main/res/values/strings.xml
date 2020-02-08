@@ -327,4 +327,6 @@
     <string name="dialog_collection_remove_all_title">Decrement all cards</string>
     <string name="dialog_collection_remove_all_message">This will decrement every card in this collection by 1. Are you sure you want to do this?</string>
     <string name="action_decrement">Decrement</string>
+    <string name="tab_v">V</string>
+    <string name="tab_vmax">VMAX</string>
 </resources>

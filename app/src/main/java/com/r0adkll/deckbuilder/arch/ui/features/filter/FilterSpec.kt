@@ -43,6 +43,8 @@ import io.pokemontcg.model.SubType.STAGE_2
 import io.pokemontcg.model.SubType.SUPPORTER
 import io.pokemontcg.model.SubType.TAG_TEAM
 import io.pokemontcg.model.SubType.TECHNICAL_MACHINE
+import io.pokemontcg.model.SubType.V
+import io.pokemontcg.model.SubType.VMAX
 import io.pokemontcg.model.SuperType
 import io.pokemontcg.model.Type
 import kotlinx.android.parcel.Parcelize
@@ -250,6 +252,8 @@ data class FilterSpec(val specs: List<Spec>) : Parcelable {
                         SubTypeAttribute(EX),
                         SubTypeAttribute(GX),
                         SubTypeAttribute(TAG_TEAM),
+                        SubTypeAttribute(V),
+                        SubTypeAttribute(VMAX),
                         SubTypeAttribute(LEVEL_UP),
                         SubTypeAttribute(BREAK),
                         SubTypeAttribute(LEGEND),
