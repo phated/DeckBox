@@ -1,3 +1,4 @@
+• Added support for Sword & Shield
 • Changes made to decks are now persisted instantly, no longer needing to hit "save"
 • Fixed issue with search input field erasing characters you type
 • Fixed issue with search filter not operating correctly

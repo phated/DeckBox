@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.11.0
+* Added support for Sword & Shield
 * [#118](https://github.com/r0adkll/DeckBox/issues/118) - Replaced intermediate session "editing" to now just have changes lazy-save to the deck (creating a new one if building from scratch).
 * [#116](https://github.com/r0adkll/DeckBox/issues/116) - Added dialog confirmation to +1 entire collection set feature. Added a -1 entire collection feature.
 * Fixed issue with search input field erasing characters
