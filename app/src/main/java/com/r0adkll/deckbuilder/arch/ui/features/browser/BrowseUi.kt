@@ -16,8 +16,6 @@ interface BrowseUi : Ui<BrowseUi.State, BrowseUi.State.Change> {
 
         fun refreshExpansions(): Observable<Unit>
         fun downloadExpansion(): Observable<Expansion>
-        fun downloadFormatExpansions(): Observable<List<Expansion>>
-        fun hideOfflineOutline(): Observable<Unit>
     }
 
     interface Actions : BaseActions {
@@ -30,8 +28,7 @@ interface BrowseUi : Ui<BrowseUi.State, BrowseUi.State.Change> {
         override val isLoading: Boolean,
         override val error: String?,
         val expansions: List<Expansion>,
-        val offlineStatus: OfflineStatus?,
-        val offlineOutline: Boolean
+        val offlineStatus: OfflineStatus?
     ) : BaseState<State.Change>(isLoading, error), Parcelable {
 
         override fun reduce(change: Change): State = when (change) {
@@ -39,7 +36,6 @@ interface BrowseUi : Ui<BrowseUi.State, BrowseUi.State.Change> {
             is Change.Error -> this.copy(error = change.description, isLoading = false)
             is Change.ExpansionsLoaded -> this.copy(expansions = change.expansions, isLoading = false)
             is Change.OfflineStatusUpdated -> this.copy(offlineStatus = change.status)
-            is Change.OfflineOutline -> this.copy(offlineOutline = change.enabled)
         }
 
         sealed class Change(logText: String) : Ui.State.Change(logText) {
@@ -49,18 +45,17 @@ interface BrowseUi : Ui<BrowseUi.State, BrowseUi.State.Change> {
                 val expansions: List<Expansion>
             ) : Change("network -> expansions(${expansions.size}) loaded")
             class OfflineStatusUpdated(val status: OfflineStatus) : Change("disk -> offline status($status)")
-            class OfflineOutline(val enabled: Boolean) : Change("user -> offline outline($enabled)")
         }
 
         override fun toString(): String {
             return "State(isLoading=$isLoading, error=$error, expansions=${expansions.size}, " +
-                "offlineStats=${offlineStatus?.expansions?.size}, offlineOutline=$offlineOutline)"
+                "offlineStats=${offlineStatus?.expansions?.size})"
         }
 
         companion object {
 
             val DEFAULT by lazy {
-                State(false, null, emptyList(), null, true)
+                State(false, null, emptyList(), null)
             }
         }
     }

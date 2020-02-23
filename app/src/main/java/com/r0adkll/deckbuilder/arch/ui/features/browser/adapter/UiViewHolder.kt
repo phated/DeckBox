@@ -24,31 +24,6 @@ sealed class UiViewHolder<I : Item>(itemView: View) : RecyclerView.ViewHolder(it
 
     abstract fun bind(item: I)
 
-    class OutlineViewHolder(
-        itemView: View,
-        private val dismissClicks: Relay<Unit>,
-        private val downloadFormat: Relay<Format>
-    ) : UiViewHolder<Item.OfflineOutline>(itemView) {
-
-        private val actionDownloadStandard by bindView<Button>(R.id.actionDownloadStandard)
-        private val actionDownloadExpanded by bindView<Button>(R.id.actionDownloadExpanded)
-        private val actionHide by bindView<Button>(R.id.actionHide)
-
-        override fun bind(item: Item.OfflineOutline) {
-            actionHide.setOnClickListener {
-                dismissClicks.accept(Unit)
-            }
-
-            actionDownloadStandard.setOnClickListener {
-                downloadFormat.accept(Format.STANDARD)
-            }
-
-            actionDownloadExpanded.setOnClickListener {
-                downloadFormat.accept(Format.EXPANDED)
-            }
-        }
-    }
-
     class ExpansionViewHolder(
         itemView: View,
         private val downloadClicks: Relay<Expansion>
@@ -96,7 +71,6 @@ sealed class UiViewHolder<I : Item>(itemView: View) : RecyclerView.ViewHolder(it
     }
 
     private enum class ViewType(@LayoutRes val layoutId: Int) {
-        OUTLINE(R.layout.item_expansion_outline),
         EXPANSION(R.layout.item_expansion);
 
         companion object {
@@ -117,13 +91,10 @@ sealed class UiViewHolder<I : Item>(itemView: View) : RecyclerView.ViewHolder(it
         fun create(
             itemView: View,
             layoutId: Int,
-            downloadClicks: Relay<Expansion>,
-            dismissClicks: Relay<Unit>,
-            downloadFormat: Relay<Format>
+            downloadClicks: Relay<Expansion>
         ): UiViewHolder<Item> {
             val viewType = ViewType.of(layoutId)
             return when (viewType) {
-                ViewType.OUTLINE -> OutlineViewHolder(itemView, dismissClicks, downloadFormat) as UiViewHolder<Item>
                 ViewType.EXPANSION -> ExpansionViewHolder(itemView, downloadClicks) as UiViewHolder<Item>
             }
         }

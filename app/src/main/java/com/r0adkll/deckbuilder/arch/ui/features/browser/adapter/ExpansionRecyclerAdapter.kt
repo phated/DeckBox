@@ -12,8 +12,6 @@ import com.r0adkll.deckbuilder.arch.ui.components.RecyclerViewItemCallback
 class ExpansionRecyclerAdapter(
     context: Context,
     private val downloadClicks: Relay<Expansion>,
-    private val dismissClicks: Relay<Unit>,
-    private val downloadFormat: Relay<Format>,
     private val onItemClickListener: (Item) -> Unit
 ) : EmptyViewListAdapter<Item, UiViewHolder<Item>>(RecyclerViewItemCallback()) {
 
@@ -25,7 +23,7 @@ class ExpansionRecyclerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UiViewHolder<Item> {
         val itemView = inflater.inflate(viewType, parent, false)
-        return UiViewHolder.create(itemView, viewType, downloadClicks, dismissClicks, downloadFormat)
+        return UiViewHolder.create(itemView, viewType, downloadClicks)
     }
 
     override fun onBindViewHolder(vh: UiViewHolder<Item>, i: Int) {

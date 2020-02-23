@@ -22,9 +22,6 @@ class BrowseRenderer(
                     val cacheStatus = s.offlineStatus?.expansions?.get(it)
                     Item.ExpansionSet(it, cacheStatus) as Item
                 }.toMutableList()
-                if (s.offlineOutline) {
-                    items.add(0, Item.OfflineOutline)
-                }
                 items
             }
             .distinctUntilChanged()

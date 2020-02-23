@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:elevation="4dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/pokemon_card_back"
+            android:src="@drawable/card_back"
             android:transitionName="cardImage"
             />
 

@@ -105,12 +105,26 @@
             android:id="@+id/actionPrivacyPolicy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
             android:padding="16dp"
             android:text="@string/pref_about_privacy_policy"
             android:textColor="@color/white70"
+            />
+
+        <TextView
+            android:id="@+id/disclaimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_large"
+            android:paddingTop="@dimen/padding_large"
+            android:paddingBottom="@dimen/padding_large"
+            android:gravity="center"
+            android:text="@string/disclaimer"
+            android:textSize="14sp"
+            android:textColor="@color/white70"
+            android:fontFamily="sans-serif-medium"
             />
 
     </LinearLayout>

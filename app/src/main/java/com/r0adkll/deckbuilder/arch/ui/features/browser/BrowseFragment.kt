@@ -44,8 +44,6 @@ class BrowseFragment : BaseFragment(), BrowseUi, BrowseUi.Actions, BrowseUi.Inte
     private lateinit var adapter: ExpansionRecyclerAdapter
 
     private val downloadClicks = PublishRelay.create<Expansion>()
-    private val dismissClicks = PublishRelay.create<Unit>()
-    private val downloadFormatClicks = PublishRelay.create<Format>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_browse, container, false)
@@ -54,7 +52,7 @@ class BrowseFragment : BaseFragment(), BrowseUi, BrowseUi.Actions, BrowseUi.Inte
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        adapter = ExpansionRecyclerAdapter(requireActivity(), downloadClicks, dismissClicks, downloadFormatClicks) {
+        adapter = ExpansionRecyclerAdapter(requireActivity(), downloadClicks) {
             when (it) {
                 is Item.ExpansionSet -> {
                     Analytics.event(Event.SelectContent.BrowseExpansionSet(it.expansion.code))
@@ -115,43 +113,6 @@ class BrowseFragment : BaseFragment(), BrowseUi, BrowseUi.Actions, BrowseUi.Inte
         return downloadClicks
             .doOnNext {
                 Analytics.event(Event.SelectContent.Action("download_expansion", it.name))
-            }
-    }
-
-    override fun downloadFormatExpansions(): Observable<List<Expansion>> {
-        return downloadFormatClicks
-            .uiDebounce()
-            .observeOn(AndroidSchedulers.mainThread())
-            .flatMap { format ->
-                val formatName = format.name.toLowerCase().capitalize()
-                val expansions = state.expansions.filter {
-                    when (format) {
-                        Format.STANDARD -> it.standardLegal
-                        Format.EXPANDED -> it.expandedLegal
-                        else -> true
-                    }
-                }
-                Analytics.event(Event.SelectContent.Action("download_format", format.name))
-                DialogUtils.confirmDialog(requireActivity(),
-                    Resource(R.string.dialog_confirm_download_format, formatName),
-                    Resource(R.string.dialog_confirm_download_format_message, expansions.size, formatName),
-                    R.string.action_download, android.R.string.cancel)
-                    .flatMap {
-                        if (it) {
-                            Analytics.event(Event.SelectContent.Action("download_format", "accepted"))
-                            Observable.just(expansions)
-                        } else {
-                            Analytics.event(Event.SelectContent.Action("download_format", "denied"))
-                            Observable.empty()
-                        }
-                    }
-            }
-    }
-
-    override fun hideOfflineOutline(): Observable<Unit> {
-        return dismissClicks
-            .doOnNext {
-                Analytics.event(Event.SelectContent.Action("hide_offline_outline"))
             }
     }
 

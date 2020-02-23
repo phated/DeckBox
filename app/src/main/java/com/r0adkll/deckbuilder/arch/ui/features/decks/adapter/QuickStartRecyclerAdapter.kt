@@ -169,7 +169,7 @@ class QuickStartRecyclerAdapter(
                         is DeckImage.Pokemon -> {
                             GlideApp.with(itemView)
                                 .load(it.imageUrl)
-                                .placeholder(R.drawable.pokemon_card_back)
+                                .placeholder(R.drawable.card_back)
                                 .into(image)
                         }
                         is DeckImage.Type -> {
@@ -180,7 +180,7 @@ class QuickStartRecyclerAdapter(
                 } ?: mostProminentCard(deck.cards)?.let {
                     GlideApp.with(itemView)
                         .loadPokemonCard(itemView.context, it, ImageType.NORMAL)
-                        .placeholder(R.drawable.pokemon_card_back)
+                        .placeholder(R.drawable.card_back)
                         .into(image)
                 }
 

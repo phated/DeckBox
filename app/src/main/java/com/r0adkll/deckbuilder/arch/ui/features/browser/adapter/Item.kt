@@ -9,16 +9,6 @@ sealed class Item : RecyclerViewItem {
 
     abstract val itemId: Long
 
-    object OfflineOutline : Item() {
-
-        override val layoutId: Int get() = R.layout.item_expansion_outline
-        override val itemId: Long get() = 0L
-
-        override fun isItemSame(new: RecyclerViewItem): Boolean = new is OfflineOutline
-
-        override fun isContentSame(new: RecyclerViewItem): Boolean = new is OfflineOutline
-    }
-
     data class ExpansionSet(
         val expansion: Expansion,
         val offlineStatus: CacheStatus?

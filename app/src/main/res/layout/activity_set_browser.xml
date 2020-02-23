@@ -45,7 +45,6 @@
                     android:layout_gravity="center"
                     android:paddingStart="32dp"
                     android:paddingEnd="32dp"
-                    android:src="@drawable/dr_smfl_logo"
                     />
 
             </FrameLayout>

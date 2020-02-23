@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="marquee_card_height">300dp</dimen>
     <dimen name="dropzone_height">112dp</dimen>
     <dimen name="dropzone_height_inverse">-112dp</dimen>
     <dimen name="deck_building_width">-1dp</dimen>
-    <dimen name="setup_body_textsize">16sp</dimen>
-    <dimen name="marquee_card_width">120dp</dimen>
-    <dimen name="setup_title_textsize">@dimen/font_display2</dimen>
     <dimen name="card_radius">8dp</dimen>
     <dimen name="sparkline_height">72dp</dimen>
 </resources>

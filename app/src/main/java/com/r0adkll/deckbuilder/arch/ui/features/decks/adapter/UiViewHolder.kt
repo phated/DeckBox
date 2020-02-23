@@ -170,7 +170,7 @@ sealed class UiViewHolder<in I : Item>(itemView: View) : ViewHolder(itemView), D
                     is DeckImage.Pokemon -> {
                         GlideApp.with(itemView)
                             .load(it.imageUrl)
-                            .placeholder(R.drawable.pokemon_card_back)
+                            .placeholder(R.drawable.card_back)
                             .into(image)
                     }
                     is DeckImage.Type -> {
@@ -181,7 +181,7 @@ sealed class UiViewHolder<in I : Item>(itemView: View) : ViewHolder(itemView), D
             } ?: mostProminentCard(deck.cards)?.let {
                 GlideApp.with(itemView)
                     .loadPokemonCard(itemView.context, it, ImageType.NORMAL)
-                    .placeholder(R.drawable.pokemon_card_back)
+                    .placeholder(R.drawable.card_back)
                     .into(image)
             }
 

@@ -46,7 +46,7 @@ sealed class UiViewHolder<in I : DeckImage>(itemView: View) : RecyclerView.ViewH
         override fun bind(item: DeckImage.Pokemon, isSelected: Boolean?) {
             GlideApp.with(itemView)
                 .load(item.imageUrl)
-                .placeholder(R.drawable.pokemon_card_back)
+                .placeholder(R.drawable.card_back)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(pokemonCardView)
             pokemonCardView.elevation = dp(getElevation(isSelected))

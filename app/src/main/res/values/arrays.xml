@@ -10,14 +10,4 @@
         <item>Attack Text</item>
     </string-array>
 
-    <string-array name="temp_exp">
-        <item>Crimson Invasion</item>
-    </string-array>
-
-    <string-array name="formats">
-        <item>Standard</item>
-        <item>Expanded</item>
-        <item>Unlimited</item>
-    </string-array>
-
 </resources>

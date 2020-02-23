@@ -121,7 +121,7 @@ class PokemonCardView @JvmOverloads constructor(
             desaturateColorFilter = ColorMatrixColorFilter(cm)
         }
 
-        setImageResource(R.drawable.pokemon_card_back)
+        setImageResource(R.drawable.card_back)
         elevation = dp(4)
         outlineProvider = CardOutlineProvider(radius)
     }
@@ -244,11 +244,11 @@ class PokemonCardView @JvmOverloads constructor(
         if (card != null) {
             GlideApp.with(this)
                 .loadPokemonCard(context, card!!, ImageType.NORMAL)
-                .placeholder(R.drawable.pokemon_card_back)
+                .placeholder(R.drawable.card_back)
                 .into(this)
         } else {
             GlideApp.with(this)
-                .load(R.drawable.pokemon_card_back)
+                .load(R.drawable.card_back)
                 .into(this)
         }
     }

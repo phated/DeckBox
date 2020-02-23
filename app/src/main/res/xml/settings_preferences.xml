@@ -59,15 +59,6 @@
             tools:isPreferenceVisible="true"
             />
 
-        <Preference
-            android:key="pref_reset_offline_outline"
-            android:title="@string/pref_help_offline_outline_title"
-            android:summary="@string/pref_help_offline_outline_summary"
-            app:icon="@drawable/ic_restore"
-            app:isPreferenceVisible="false"
-            tools:isPreferenceVisible="true"
-            />
-
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_category_about">

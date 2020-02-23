@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <plurals name="card_selection_count">
-        <item quantity="one">%d card added</item>
-        <item quantity="other">%d cards added</item>
-    </plurals>
 
     <plurals name="card_detail_copies">
         <item quantity="one">%d Copy</item>

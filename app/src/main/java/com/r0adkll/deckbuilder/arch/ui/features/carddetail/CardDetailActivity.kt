@@ -413,7 +413,7 @@ class CardDetailActivity : BaseActivity(), CardDetailUi, CardDetailUi.Intentions
                 })
 
             if (slidingLayout == null) {
-                request = request.placeholder(R.drawable.pokemon_card_back)
+                request = request.placeholder(R.drawable.card_back)
             }
 
             @Suppress("PLUGIN_WARNING")

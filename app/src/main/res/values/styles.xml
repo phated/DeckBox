@@ -1,9 +1,5 @@
 <resources>
 
-    <style name="Theme.DeckBuilder.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.DeckBuilder.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="Widget.DeckBuilder.SearchView" parent="android:style/Widget.Material.SearchView">
         <item name="android:searchIcon">@android:color/transparent</item>
         <item name="android:searchHintIcon">@android:color/transparent</item>

@@ -42,28 +42,13 @@ class BrowsePresenter @Inject constructor(
         val offlineStatus = offlineRepository.observeStatus()
             .map { Change.OfflineStatusUpdated(it) as Change }
 
-        val offlineOutline = preferences.offlineOutline
-            .asObservable()
-            .map { Change.OfflineOutline(it) as Change }
-
         disposables += intentions.downloadExpansion()
             .subscribe {
                 offlineRepository.download(DownloadRequest(listOf(it), true))
             }
 
-        disposables += intentions.downloadFormatExpansions()
-            .subscribe {
-                offlineRepository.download(DownloadRequest(it, true))
-            }
-
-        disposables += intentions.hideOfflineOutline()
-            .subscribe {
-                preferences.offlineOutline.set(false)
-            }
-
         return loadExpansions
             .mergeWith(offlineStatus)
-            .mergeWith(offlineOutline)
             .mergeWith(refreshExpansions)
     }
 

@@ -95,7 +95,7 @@ class MarqueeCardContainer @JvmOverloads constructor(
         GlideApp.with(this)
             .load(imageUrl)
             .transition(DrawableTransitionOptions.withCrossFade())
-            .placeholder(R.drawable.pokemon_card_back)
+            .placeholder(R.drawable.card_back)
             .into(view)
     }
 
